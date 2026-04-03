@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Kontakt{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center; margin-bottom:40px;">📬 Biz bilan bog‘laning</h1>
+
+<div style="max-width:600px; margin:auto; background: rgba(255,255,255,0.1); padding:40px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Ismingiz</label>
+        <input type="text" name="name" id="name" required style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
+        
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
+        
+        <label for="message">Xabar</label>
+        <textarea name="message" id="message" rows="5" required style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;"></textarea>
+        
+        <button type="submit" class="btn">Yuborish</button>
+    </form>
+
+    {% if success %}
+        <p style="margin-top:20px; color:#00ff00;">Xabaringiz muvaffaqiyatli yuborildi! Rahmat 😊</p>
+    {% endif %}
+
+</div>
+{% endblock %}

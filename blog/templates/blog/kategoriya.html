@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block kontent %}
+<h2>{{ kategoriya.nom }}</h2>
+
+{% for post in postlar %}
+    <div class="post">
+        <h3>{{ post.sarlavha }}</h3>
+        <p>{{ post.matn|truncatewords:20 }}</p>
+    </div>
+{% empty %}
+    <p>Post yo‘q</p>
+{% endfor %}
+
+{% endblock %}

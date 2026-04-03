@@ -1,0 +1,14 @@
+{% extends "blog/bosh.html" %}
+
+{% block kontent %}
+
+<h2>Draft postlar</h2>
+
+{% for post in postlar %}
+    <h3>{{ post.sarlavha }}</h3>
+    <p>{{ post.matn|truncatewords:20 }}</p>
+{% empty %}
+    <p>Draft post yo‘q</p>
+{% endfor %}
+
+{% endblock %}

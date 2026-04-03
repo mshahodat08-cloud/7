@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Xizmatlar{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center; margin-bottom:30px;">💼 Bizning Xizmatlar</h1>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+    <div class="card">
+        <h2>🌐 Web sayt yaratish</h2>
+        <p>Responsive va zamonaviy dizayn, SEO optimizatsiya bilan.</p>
+        <button class="btn" onclick="alert('Web sayt xizmati tanlandi!')">Tanlash</button>
+    </div>
+    <div class="card">
+        <h2>🤖 Telegram bot</h2>
+        <p>Foydalanuvchilar bilan avtomatik muloqot va xizmatlar.</p>
+        <button class="btn" onclick="alert('Telegram bot xizmati tanlandi!')">Tanlash</button>
+    </div>
+    <div class="card">
+        <h2>📱 Mobil ilova</h2>
+        <p>Android va iOS uchun zamonaviy mobil ilovalar yaratamiz.</p>
+        <button class="btn" onclick="alert('Mobil ilova xizmati tanlandi!')">Tanlash</button>
+    </div>
+    <div class="card">
+        <h2>🎨 Dizayn xizmatlari</h2>
+        <p>Logo, branding, va vizual kontent dizayni.</p>
+        <button class="btn" onclick="alert('Dizayn xizmati tanlandi!')">Tanlash</button>
+    </div>
+</div>
+{% endblock %}

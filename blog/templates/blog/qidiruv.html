@@ -1,0 +1,39 @@
+{% extends 'blog/asosiy.html' %}
+
+{% block kontent %}
+<div class="search-page">
+
+    <h2>🔍 "{{ query }}" bo‘yicha natijalar</h2>
+
+    {% if natijalar %}
+        <div class="results-grid">
+            {% for post in natijalar %}
+                <div class="card">
+
+                    {% if post.rasm %}
+                        <img src="{{ post.rasm.url }}" class="card-img">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h3>
+                            <a href="{% url 'post_batafsil' post.id %}">
+                                {{ post.sarlavha }}
+                            </a>
+                        </h3>
+
+                        <p>{{ post.matn|truncatechars:120 }}</p>
+
+                        <span class="date">
+                            {{ post.yaratilgan|date:"d M Y" }}
+                        </span>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>❌ Hech narsa topilmadi</p>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block sarlavha %}Mening Blogim{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/css/uslub.css' %}">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>🚀 Mening Ajoyib Blogim</h1>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+
+    <!-- CHAP TOMON -->
+   <div class="menu-left">
+    <a href="{% url 'bosh_sahifa' %}">🏠 Bosh Sahifa</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">📚 Kategoriyalar ▼</button>
+        <div class="dropdown-content">
+            {% for kat in kategoriyalar %}
+                <a href="{% url 'kategoriya_postlari' kat.id %}">{{ kat.nom }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="{% url 'ommabop' %}">🔥 Ommabop</a>
+    <a href="{% url 'biz_haqimizda' %}">👥 Biz Haqimizda</a>
+    <a href="{% url 'portfolio' %}">💼 Portfolio</a>
+    <a href="{% url 'aloqa' %}">📧 Aloqa</a>
+</div>
+
+   <div class="search-container">
+    <form method="GET" action="{% url 'qidiruv' %}" class="search-form">
+        <input type="text" name="q" placeholder="🔍 Qidirish..." class="search-input">
+        <button type="submit" class="search-button">🔍</button>
+    </form>
+</div>
+
+<div class="menu-right">
+    {% if user.is_authenticated %}
+    <a href="{% url 'post_yaratish' %}">✍️ Yangi Post</a>
+
+    <!-- User menu start -->
+    <div class="user-menu">
+        <button class="user-btn">
+            👤 {{ user.username }} ▾
+        </button>
+        <div class="user-dropdown">
+            <a href="{% url 'profil_sahifasi' username=user.username %}">Profil</a>
+            <a href="{% url 'parol_ozgartirish' %}">Parolni o'zgartirish</a>
+            <a href="{% url 'chiqish' %}">🚪 Chiqish</a>
+        </div>
+    </div>
+    <!-- User menu end -->
+
+    {% else %}
+        <a href="{% url 'kirish' %}">🔐 Kirish</a>
+        <a href="{% url 'royxatdan_otish' %}">📝 Ro'yxatdan O'tish</a>
+    {% endif %}
+</div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block kontent %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>
+
